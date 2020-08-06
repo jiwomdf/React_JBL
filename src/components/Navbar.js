@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../contexts/ThemeContext';
-import { AuthContext } from '../contexts/AuthContext';
 
 /* class Navbar extends Component {
     render() {
@@ -35,7 +34,6 @@ import { AuthContext } from '../contexts/AuthContext';
 
 const Navbar = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext)
-    const { isAuthenticated, toggleAuth } = useContext(AuthContext)
     const { toggleTheme } = useContext(ThemeContext)
 
     const theme = isLightTheme ? light : dark
@@ -51,11 +49,11 @@ const Navbar = () => {
                     <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-purple-500 hover:text-white mr-4" >Home</Link>
                     <Link to="/About" className="block mt-4 lg:inline-block lg:mt-0 text-purple-500 hover:text-white mr-4">About</Link>
                     <Link to="/Contact" className="block mt-4 lg:inline-block lg:mt-0 text-purple-500 hover:text-white mr-4">Contact</Link>
-                    <Link onClick={toggleTheme}> Toggle the theme</Link>
+                    <button onClick={toggleTheme} className="block mt-4 lg:inline-block lg:mt-0 text-black-500 hover:text-white mr-4"> Toggle the theme</button>
                 </div>
-                <Link to="/Login" component="Login" onClick={toggleAuth}>
-                    {isAuthenticated ? 'Logged in' : 'Logged out'}
-                </Link>
+                <div className="pr-2">
+                    <Link to="/Login" className="block mt-4 lg:inline-block lg:mt-0 text-purple-500 hover:text-white mr-4">Login</Link>
+                </div>
             </div>
         </nav>
     );
