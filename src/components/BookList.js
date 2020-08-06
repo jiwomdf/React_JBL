@@ -28,20 +28,20 @@ const BookList = () => {
             <div className="grid grid-cols-4 gap-4">
                 {books.map(book => {
                     return (
-                        <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg" >
-                            <img src="https://source.unsplash.com/random" alt="" />
-                            <div className="px-5 py-4" >
-                                <div className="font-bold text-purple-500 text-xl-mb-2">
-                                    Photo by John Doe
-                        </div>
-                            </div>
-                            <ul>
-                                <li><strong>Views: </strong> 4000</li>
-                                <li><strong>Downloads: </strong> 300</li>
-                                <li><strong>Likes: </strong> 400</li>
-                            </ul>
-                        </div>
+                        <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6" >
+                            <img src="https://source.unsplash.com/random/250x250" alt="image" class="w-full" />
 
+                            <div class="px-4 py-4">
+                                <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                            </div>
+                            <div class="px-4 py-4">
+                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
+                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
+                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+                            </div>
+                        </div>
                     )
                 })}
             </div>
