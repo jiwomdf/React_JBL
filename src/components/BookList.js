@@ -24,15 +24,29 @@ const BookList = () => {
     const { books } = useContext(BookContext)
     const theme = isLightTheme ? light : dark
     return (
-        <div className='book-list' style={{ color: theme.syntax, background: theme.bg }}>
-            <ul>
+        <div className="" style={{ color: theme.syntax, background: theme.bg }} >
+            <div className="grid grid-cols-4 gap-4">
                 {books.map(book => {
                     return (
-                        <li key={book.id} style={{ background: theme.ui }}>{book.title}</li>
+                        <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg" >
+                            <img src="https://source.unsplash.com/random" alt="" />
+                            <div className="px-5 py-4" >
+                                <div className="font-bold text-purple-500 text-xl-mb-2">
+                                    Photo by John Doe
+                        </div>
+                            </div>
+                            <ul>
+                                <li><strong>Views: </strong> 4000</li>
+                                <li><strong>Downloads: </strong> 300</li>
+                                <li><strong>Likes: </strong> 400</li>
+                            </ul>
+                        </div>
+
                     )
                 })}
-            </ul>
+            </div>
         </div>
+
     );
 }
 
