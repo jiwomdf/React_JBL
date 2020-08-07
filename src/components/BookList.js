@@ -24,7 +24,7 @@ const BookList = () => {
     const { books } = useContext(BookContext)
     const theme = isLightTheme ? light : dark
     return (
-        <div className="" style={{ color: theme.syntax, background: theme.bg }} >
+        <div style={{ color: theme.syntax, background: theme.bg }} >
             <div className="grid grid-cols-4 gap-4">
                 {books.map(book => {
                     return (

@@ -6,6 +6,7 @@ import BookContextProvider from './contexts/BookContext';
 import Login from './pages/Login'
 import Contact from './pages/Contact'
 import BookList from './components/BookList';
+import About from './pages/About'
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
@@ -20,7 +21,7 @@ function App() {
 
           <BookContextProvider>
             <Switch>
-              <Route path="/About" component="About" />
+              <Route path="/About" component={About} />
               <Route path="/Contact" component={Contact} />
               <Route path="/Login" component={Login} />
               <Route path="/" component={BookList} />
