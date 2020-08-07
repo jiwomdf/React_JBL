@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext';
-import { BookContext } from '../contexts/BookContext';
+import { ImageListContext } from '../contexts/ImageListContext';
+import { btn } from '../assets/style'
 
 /* class BookList extends Component {
     static contextType = ThemeContext
@@ -21,11 +22,11 @@ import { BookContext } from '../contexts/BookContext';
 
 const BookList = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
-    const { books } = useContext(BookContext)
+    const { books } = useContext(ImageListContext)
     const theme = isLightTheme ? light : dark
     return (
-        <div style={{ color: theme.syntax, background: theme.bg }} >
-            <div className="grid grid-cols-4 gap-4">
+        <div style={{ color: theme.syntax, background: theme.bg, paddingTop: 40 }} >
+            <div className="grid lg:grid-cols-4 lg:gap-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto">
                 {books.map(book => {
                     return (
                         <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6" >
@@ -34,12 +35,11 @@ const BookList = () => {
                             <div className="px-4 py-4">
                                 <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
                                 <p className="text-gray-700 text-base">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
                             <div className="px-4 py-4">
-                                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-                                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-                                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+                                <button className={btn.primary_rounded}>Detail</button>
+                                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Rp. 25000</span>
                             </div>
                         </div>
                     )

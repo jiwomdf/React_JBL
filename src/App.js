@@ -1,11 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer'
+
 import ThemeContextProvider from './contexts/ThemeContext';
-import BookContextProvider from './contexts/BookContext';
+import ImageListContextProvider from './contexts/ImageListContext';
 
 import Login from './pages/Login'
 import Contact from './pages/Contact'
-import BookList from './components/BookList';
+import Main from './pages/Main';
 import About from './pages/About'
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
@@ -19,15 +21,15 @@ function App() {
         <Router>
           <Navbar />
 
-          <BookContextProvider>
+          <ImageListContextProvider>
             <Switch>
               <Route path="/About" component={About} />
               <Route path="/Contact" component={Contact} />
               <Route path="/Login" component={Login} />
-              <Route path="/" component={BookList} />
+              <Route path="/" component={Main} />
             </Switch>
-          </BookContextProvider>
-
+          </ImageListContextProvider>
+          <Footer />
         </Router>
 
       </ThemeContextProvider>

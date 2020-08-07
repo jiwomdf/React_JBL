@@ -1,0 +1,12 @@
+.content {
+    flex: 1 0 auto;
+    padding: 10px;
+}
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #9f7aea;
+    color: white;
+    padding: 10px;
+}
