@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Contact from './pages/Contact'
 import Main from './pages/Main';
 import About from './pages/About'
+import Register from './pages/Register'
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="/About" component={About} />
               <Route path="/Contact" component={Contact} />
               <Route path="/Login" component={Login} />
+              <Route path="/Register" component={Register} />
               <Route path="/" component={Main} />
             </Switch>
           </ImageListContextProvider>
