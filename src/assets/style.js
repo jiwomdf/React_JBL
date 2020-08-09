@@ -1,9 +1,9 @@
 
 /* Navigation */
 export const navBtn = {
-    primary: "block mt-4 lg:inline-block lg:mt-0 text-purple-500 hover:text-white mr-4"
+    primary: "block inline-block mt-0 text-purple-500 hover:text-white mr-4"
 }
-export const btnDarkMode = "block mt-4 lg:inline-block lg:mt-0 text-black-500 hover:text-white mr-4"
+export const btnDarkMode = "block inline-block mt-0 text-black-500 hover:text-white mr-4"
 
 /* Text Style */
 export const txtTitle = "flex justify-center pb-4 pt-4 text-5xl"
