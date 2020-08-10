@@ -25,9 +25,9 @@ const BookList = () => {
     const { books } = useContext(ImageListContext)
     const theme = isLightTheme ? light : dark
     const content = (
-        <div>
+        <>
             <p className={`${txtTitle} text-center hidden md:flex`}>Welcome to JBL Store</p>
-            <div className="grid lg:grid-cols-4 gap-2 sm:grid-cols-1 md:grid-cols-2 container mx-auto">
+            <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto">
                 {books.map(book => {
                     return (
                         <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6" >
@@ -46,7 +46,7 @@ const BookList = () => {
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 
     return (

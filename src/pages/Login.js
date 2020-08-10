@@ -29,7 +29,7 @@ const Login = () => {
                     </div>
                     <div className="flex justify-between items-center">
                         <button className={btn.primary} style={{ marginTop: "12px" }} type="button">Sign In</button>
-                        <a className="inline-block align-baseline font-bold text-sm" href="#">Forgot Password?</a>
+                        <button className="inline-block align-baseline font-bold text-sm">Forgot Password?</button>
                     </div>
                 </form>
             </div>

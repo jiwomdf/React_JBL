@@ -7,13 +7,13 @@ const Footer = () => {
         <footer className="footer">
             <ul className="flex justify-center">
                 <li className="mr-6">
-                    <a className={label} href="#">Programmer Gabut Inc 2020</a>
+                    <p className={label} href="#">Programmer Gabut Inc 2020</p>
                 </li>
                 <li className="mr-6">
-                    <a className={label} href="#">Icon</a>
+                    <p className={label} href="#">Icon</p>
                 </li>
                 <li className="mr-6">
-                    <a className={label} href="#">Icon</a>
+                    <p className={label} href="#">Icon</p>
                 </li>
             </ul>
         </footer>
