@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext';
 import { ImageListContext } from '../contexts/ImageListContext';
 import { btn, txtTitle } from '../assets/style'
@@ -31,7 +31,7 @@ const BookList = () => {
                 {books.map(book => {
                     return (
                         <div key={book.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6" >
-                            <img src="https://source.unsplash.com/random/250x150" alt="image" className="w-full h-full" />
+                            <img src="https://source.unsplash.com/random/250x150" alt={book.id} className="w-full h-full" />
 
                             <div className="px-4 py-4">
                                 <div className="font-bold text-xl mb-2">The Coldest Sunset</div>

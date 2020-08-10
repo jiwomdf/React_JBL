@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
-import { v1 as uuidv1 } from 'uuid'
+// import { v1 as uuidv1 } from 'uuid'
+
 export const ImageListContext = createContext()
 
 const ImageListContextProvider = (props) => {
@@ -19,12 +20,12 @@ const ImageListContextProvider = (props) => {
         { title: 'the hero of ages', id: 13 }
 
     ])
-    const addBook = (title, author) => {
+    /* const addBook = (title, author) => {
         setBook([...books, { title: title, author: author, id: uuidv1() }])
     }
     const removeBook = (id) => {
         setBook(books.filter(book => book.id !== id))
-    }
+    } */
     return (
         <ImageListContext.Provider value={{ books }}>
             {props.children}
