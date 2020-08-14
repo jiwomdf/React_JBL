@@ -13,7 +13,6 @@ const Navbar = () => {
     const { toggleTheme } = useContext(ThemeContext)
     const { dispatchUser, user } = useContext(UserContext)
 
-
     const isLogin = checkLogin(user)
     const theme = isLightTheme ? light : dark
     const history = useHistory();
@@ -33,7 +32,11 @@ const Navbar = () => {
 
             <div className="flex-grow flex items-center w-auto sm:mt-0 mt-2">
                 <div className="flex flex-grow">
-                    <Link to="/" className={navBtn.primary} >Home</Link>
+                    <Link to="/" className={navBtn.primary} >
+                        {
+                            isLogin === false ? "Home" : "Dashboard"
+                        }
+                    </Link>
                     <Link to="/About" className={navBtn.primary}>About</Link>
                     <Link to="/Contact" className={navBtn.primary}>Contact</Link>
                 </div>

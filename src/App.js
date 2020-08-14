@@ -5,7 +5,9 @@ import Footer from './components/Footer'
 import ThemeContextProvider from './contexts/ThemeContext';
 import ImageListContextProvider from './contexts/ImageListContext';
 import UserContextProvider from './contexts/UserContext'
-import PrivateRoute from './custom/PrivateRoute'
+
+import PrivateRouteIfLogin from './custom/PrivateRouteIfLogin'
+import PrivateRouteIfNotLogin from './custom/PrivateRouterIfNotLogin'
 
 import Login from './pages/Login'
 import Contact from './pages/Contact'
@@ -35,8 +37,8 @@ function App() {
               <Route path="/Register" component={Register} />
               <ImageListContextProvider>
                 <Route path="/Postitem" component={Postitem} />
-                <PrivateRoute path="/Dashboard" component={Dashboard} />
-                <Route path="/" exact component={Main} />
+                <PrivateRouteIfLogin path="/Dashboard" component={Dashboard} />
+                <PrivateRouteIfNotLogin path="/" exact component={Main} />
               </ImageListContextProvider>
             </Switch>
 
