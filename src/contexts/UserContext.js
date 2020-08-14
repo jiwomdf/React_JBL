@@ -12,23 +12,22 @@ function reducer(user, action) {
     switch (action.type) {
         case ACTIONS.LOGIN: {
             localStorage.setItem('auth', action.payload);
-            return
+            return { ...user, email: action.payload }
         }
         case ACTIONS.LOGOUT: {
             localStorage.removeItem('auth');
-            return
+            return { ...user, email: null }
         }
         default: {
             console.log(action)
             console.log("UserContext Action Invalid")
             return
         }
-
     }
 }
 
 const UserContextProvider = (props) => {
-    const [user, dispatch] = useReducer(reducer, {
+    const [user, dispatchUser] = useReducer(reducer, {
         email: null
     })
 
@@ -39,12 +38,19 @@ const UserContextProvider = (props) => {
     }, [user])
 
     return (
-        <UserContext.Provider value={{ user, dispatch }}>
+        <UserContext.Provider value={{ user, dispatchUser }}>
             {props.children}
         </UserContext.Provider>
     )
 }
 
-export const checkLogin = () => localStorage.getItem('auth') ? true : false;
+export const checkLogin = (user) => {
+
+    const emailInStrg = localStorage.getItem('auth')
+
+    user.email = emailInStrg ? emailInStrg : null
+
+    return emailInStrg ? true : false
+}
 
 export default UserContextProvider

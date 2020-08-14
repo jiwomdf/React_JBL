@@ -5,7 +5,7 @@ import { UserContext, checkLogin } from '../contexts/UserContext'
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     const { user } = useContext(UserContext)
-    const isLogin = checkLogin()
+    const isLogin = checkLogin(user)
 
     return (
         <Route

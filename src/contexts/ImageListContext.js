@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 export const ImageListContext = createContext()
 
 const ImageListContextProvider = (props) => {
-    const [books] = useState([
+    const [images] = useState([
         { title: 'name of the wind', id: 1 },
         { title: 'the way of kings', id: 2 },
         { title: 'the final empire', id: 3 },
@@ -27,7 +27,7 @@ const ImageListContextProvider = (props) => {
         setBook(books.filter(book => book.id !== id))
     } */
     return (
-        <ImageListContext.Provider value={{ books }}>
+        <ImageListContext.Provider value={{ images }}>
             {props.children}
         </ImageListContext.Provider>
     );

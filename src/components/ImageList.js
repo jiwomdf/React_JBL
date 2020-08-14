@@ -1,44 +1,23 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
-import { btn, txtTitle, searchBar } from "../assets/style";
+import { btn, searchBar } from "../assets/style";
 
-/* class BookList extends Component {
-    static contextType = ThemeContext
-    render() {
-        const { isLightTheme, light, dark } = this.context
-        const theme = isLightTheme ? light : dark
-        return (
-            <div className='book-list' style={{ color: theme.syntax, background: theme.bg }}>
-                <ul>
-                    <li style={{ background: theme.ui }}>the way of king</li>
-                    <li style={{ background: theme.ui }}>the name of the wind</li>
-                    <li style={{ background: theme.ui }}>the final empire</li>
-                </ul>
-            </div>
-        );
-    }
-} */
-
-const BookList = () => {
+const ImageList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const { books } = useContext(ImageListContext);
+  const { images } = useContext(ImageListContext);
   const theme = isLightTheme ? light : dark;
   const content = (
     <>
-      <p className={`${txtTitle} text-center hidden md:flex`}>
-        Welcome to JBL Store
-      </p>
-
       {/* Search Bar */}
-      <div className="flex justify-center mt-2 mb-8">
-        <input type="text" placeholder="search" className={searchBar} style={{ width: 500 }} />
+      <div className="flex justify-center mb-8">
+        <input type="text" placeholder="search" className={`${searchBar}`} />
         <button className={`${btn.primary} ml-2`}>Search</button>
       </div>
 
+      <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto">
 
-      <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto" style={{ background: theme.con, borderRadius: 10 }}>
-        {books.map((book) => {
+        {images.map((book) => {
           return (
             <div
               key={book.id}
@@ -53,13 +32,13 @@ const BookList = () => {
 
               <div className="px-4 py-4">
                 <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                <p className="text-gray-700 text-base">
+                <p className="text-base">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </p>
               </div>
               <div className="px-4 py-4">
                 <button className={btn.primary_rounded}>Detail</button>
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">
                   Rp. 25000
                 </span>
               </div>
@@ -72,21 +51,13 @@ const BookList = () => {
 
   return (
     <div>
-      {books.length <= 4 ? (
-        <div
-          style={{
-            color: theme.syntax,
-            background: theme.bg,
-            height: "100vh",
-            minHeight: "100vh",
-          }}
-        >
-          {content}
-        </div>
-      ) : (
-          <div
-            style={{ color: theme.syntax, background: theme.bg, height: "100%" }}
-          >
+      {images.length <= 4 ?
+        (
+          <div style={{ color: theme.syntax, background: theme.bg, height: "100vh", minHeight: "100vh", }}>
+            {content}
+          </div>
+        ) : (
+          <div style={{ color: theme.syntax, background: theme.bg, height: "100%" }}>
             {content}
           </div>
         )}
@@ -94,4 +65,4 @@ const BookList = () => {
   );
 };
 
-export default BookList;
+export default ImageList;

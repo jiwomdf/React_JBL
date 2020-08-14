@@ -14,8 +14,8 @@ export const txtTitle = "flex justify-center pb-4 pt-4 text-5xl";
 
 /* Label */
 export const label = {
-  small: "block uppercase tracking-wide text-xs font-bold mb-2",
-  medium: "block font-bold text-xl mb-2 text-sm font-bold mb-2",
+  small: "block uppercase tracking-wide text-xs font-bold",
+  medium: "block font-bold text-xl text-sm font-bold",
 };
 export const labelContainer = "md:flex md:items-center mb-6";
 export const labelInput = {

@@ -9,7 +9,7 @@ import { auth } from '../script/firebaseInit'
 
 const Login = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
-    const { dispatch } = useContext(UserContext)
+    const { dispatchUser } = useContext(UserContext)
 
     const theme = isLightTheme ? light : dark
     const history = useHistory();
@@ -24,7 +24,7 @@ const Login = () => {
 
         try {
             const cred = await auth.signInWithEmailAndPassword(email, password)
-            dispatch({ type: ACTIONS.LOGIN, payload: cred.user.email })
+            dispatchUser({ type: ACTIONS.LOGIN, payload: cred.user.email })
 
             history.push("/Dashboard");
         } catch (err) {
