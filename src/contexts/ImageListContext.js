@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 export const ImageListContext = createContext()
 
 const ImageListContextProvider = (props) => {
-    const [books, setBook] = useState([
+    const [books] = useState([
         { title: 'name of the wind', id: 1 },
         { title: 'the way of kings', id: 2 },
         { title: 'the final empire', id: 3 },
