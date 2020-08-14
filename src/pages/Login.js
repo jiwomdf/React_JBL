@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { ThemeContext } from '../contexts/ThemeContext';
-import { UserContext } from '../contexts/UserContext'
+import { UserContext, ACTIONS } from '../contexts/UserContext'
 
 import { txtTitle, label, labelInput, btn, form } from '../assets/style'
 import { useHistory } from "react-router-dom";
@@ -9,7 +9,7 @@ import { auth } from '../script/firebaseInit'
 
 const Login = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
-    const { updateUser } = useContext(UserContext)
+    const { dispatch } = useContext(UserContext)
 
     const theme = isLightTheme ? light : dark
     const history = useHistory();
@@ -24,9 +24,9 @@ const Login = () => {
 
         try {
             const cred = await auth.signInWithEmailAndPassword(email, password)
-            updateUser(cred.user.email)
-            history.push("/Dashboard");
+            dispatch({ type: ACTIONS.LOGIN, payload: cred.user.email })
 
+            history.push("/Dashboard");
         } catch (err) {
             alert(err.message)
         }

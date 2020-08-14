@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ThemeContext } from '../contexts/ThemeContext';
-import { UserContext } from '../contexts/UserContext'
+import { UserContext, ACTIONS, checkLogin } from '../contexts/UserContext'
 
 import { navBtn, btnDarkMode, btn } from '../assets/style'
 import { auth } from '../script/firebaseInit'
@@ -10,14 +10,17 @@ import { auth } from '../script/firebaseInit'
 const Navbar = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext)
     const { toggleTheme } = useContext(ThemeContext)
-    const { email, updateUser } = useContext(UserContext)
+    const { dispatch } = useContext(UserContext)
+
+
+    const isLogin = checkLogin()
+    const theme = isLightTheme ? light : dark
 
     const signout = () => {
         auth.signOut().then(console.log('sign out'))
-        updateUser("")
+        dispatch({ type: ACTIONS.LOGOUT })
     }
 
-    const theme = isLightTheme ? light : dark
     return (
         <nav style={{ background: theme.ui, color: theme.syntax }} className="flex flex-wrap p-2 justify-center">
             <div className="flex items-center flex-shrink-0 mr-6">
@@ -33,9 +36,9 @@ const Navbar = () => {
                 </div>
                 <div className="flex leading-none mt-0">
                     {
-                        email === "" ? <Link to="/Login" className={navBtn.primary}>
-                            <button className={btn.primary}>Login</button>
-                        </Link> : <button className={btn.primary} onClick={signout}>Logout</button>
+                        isLogin === false ?
+                            <Link to="/Login" className={navBtn.primary}> <button className={btn.primary}>Login</button></Link> :
+                            <button className={btn.primary} onClick={signout}>Logout</button>
                     }
                     <button onClick={toggleTheme} className={btnDarkMode}>
                         <svg className="fill-current h-6 w-8 " viewBox="0 0 18 18"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path></svg>
