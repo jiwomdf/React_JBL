@@ -30,12 +30,21 @@ export const btn = {
   primary:
     "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-2 px-4 rounded",
   primary_rounded:
-    "inline-block bg-purple-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 focus:shadow-outline focus:outline-none hover:bg-purple-400",
+    "shadow bg-purple-500 hover:bg-purple-400 rounded-full focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
   green:
-    "shadow bg-green-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-2 px-4 rounded",
+    "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-2 px-4 rounded",
+  green_small:
+    "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
+  green_rounded:
+    "shadow bg-green-500 hover:bg-green-400 rounded-full focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
+  red_rounded:
+    "shadow bg-red-500 hover:bg-red-400 rounded-full focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
 };
 
 /* Form */
 export const form = {
   card: "shadow-md rounded pt-8 pl-12 pr-12 pb-12",
 };
+
+/* Card */
+export const card = "shadow-md rounded"

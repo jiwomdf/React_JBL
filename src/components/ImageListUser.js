@@ -3,7 +3,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
 import { btn, searchBar } from "../assets/style";
 
-const ImageList = () => {
+const ImageListUser = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
   const { images } = useContext(ImageListContext);
   const theme = isLightTheme ? light : dark;
@@ -35,12 +35,12 @@ const ImageList = () => {
                 <p className="text-base">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </p>
+                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">Rp. 25000</span>
               </div>
               <div className="px-4 py-4">
-                <button className={btn.primary_rounded}>Detail</button>
-                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">
-                  Rp. 25000
-                </span>
+                <button className={`${btn.primary_rounded} mx-1`}>Detail</button>
+                <button className={`${btn.green_rounded} mx-1`}>Edit</button>
+                <button className={`${btn.red_rounded} mx-1`}>Delete</button>
               </div>
             </div>
           );
@@ -65,4 +65,4 @@ const ImageList = () => {
   );
 };
 
-export default ImageList;
+export default ImageListUser;
