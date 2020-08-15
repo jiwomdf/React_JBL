@@ -1,12 +1,20 @@
 import React, { createContext, useEffect, useReducer } from "react"
+import { auth } from '../script/firebaseInit'
 
 export const UserContext = createContext();
+
+/* auth.onAuthStateChanged(user => {
+    if (user) {
+
+    } else {
+
+    }
+}) */
 
 export const ACTIONS = {
     LOGIN: 'login',
     LOGOUT: 'logout'
 }
-
 
 function reducer(user, action) {
     switch (action.type) {
@@ -31,11 +39,11 @@ const UserContextProvider = (props) => {
         email: null
     })
 
-    useEffect(() => {
+    /* useEffect(() => {
         // console.log("Before.. ", user)
         // user.email = localStorage.getItem('auth') ? localStorage.getItem('auth') : null;
         // console.log("After.. ", user)
-    }, [user])
+    }, [user]) */
 
     return (
         <UserContext.Provider value={{ user, dispatchUser }}>

@@ -31,6 +31,8 @@ export const btn = {
     "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-2 px-4 rounded",
   primary_rounded:
     "shadow bg-purple-500 hover:bg-purple-400 rounded-full focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
+  primary_small:
+    "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-1 px-2 rounded",
   green:
     "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none hover:shadow-lg text-white font-bold py-2 px-4 rounded",
   green_small:

@@ -5,8 +5,8 @@ export const ThemeContext = createContext()
 const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState({
     isLightTheme: false,
-    light: { syntax: "#555", ui: "#ddd", bg: "#F7FAFC", con: "#f3f6f7" },
-    dark: { syntax: "#ddd", ui: "#333", bg: "#595959", con: "#555" },
+    light: { syntax: "#555", ui: "#ddd", bg: "#F7FAFC", bg2: "#F7FAFC" },
+    dark: { syntax: "#ddd", ui: "#333", bg: "#595959", bg2: "#38A169" },
   })
 
   const toggleTheme = () => {
