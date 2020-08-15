@@ -10,7 +10,7 @@ export const searchBar =
   "text-gray-600 py-2 border border-transparent rounded-lg focus:outline-none hover:shadow-lg text-center shadow-md";
 
 /* Text Style */
-export const txtTitle = "flex justify-center pb-4 pt-4 text-5xl";
+export const txtTitle = "flex justify-center pb-4 text-5xl";
 
 /* Label */
 export const label = {

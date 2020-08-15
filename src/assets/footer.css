@@ -8,5 +8,11 @@
     text-align: center;
     background-color: #9f7aea;
     color: white;
-    padding: 10px;
+    padding: 2.5vh;
+}
+
+@media(max-width: 1300px){
+    .footer{
+        visibility: hidden;
+    }
 }
