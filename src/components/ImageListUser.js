@@ -3,10 +3,13 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
 import { btn, searchBar } from "../assets/style";
 
-const ImageListUser = () => {
+const ImageListUser = (props) => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
   const { images } = useContext(ImageListContext);
   const theme = isLightTheme ? light : dark;
+
+  const loginUser = props.user
+
   const content = (
     <>
       {/* Search Bar */}
@@ -17,16 +20,17 @@ const ImageListUser = () => {
 
       <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
 
-        {images.map((book) => {
+        {images.filter(user => user.email === loginUser.email).map((itm) => {
           return (
             <div
-              key={book.id}
+              key={itm.id}
               style={{ background: theme.ui }}
               className="max-w-sm rounded overflow-hidden shadow-lg m-6"
             >
+
               <img
-                src="https://source.unsplash.com/random/250x150"
-                alt={book.id}
+                src={itm.url}
+                alt={itm.id}
                 className="w-full h-full"
               />
 

@@ -8,6 +8,7 @@
 */
 
 import React, { useContext } from 'react'
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { ThemeContext } from '../contexts/ThemeContext'
 import { txtTitle, btn, labelInput, form } from '../assets/style'
@@ -20,10 +21,13 @@ import {
     SUCCESS_DELETE_DATA,
     SUCCESS_UPLOAD_INSERT_DATA
 } from '../string'
+import { UserContext } from '../contexts/UserContext'
 
 const Postitem = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext)
+    const { user } = useContext(UserContext)
     const theme = isLightTheme ? light : dark
+    const history = useHistory();
 
     const { register, handleSubmit, errors } = useForm()
 
@@ -37,8 +41,10 @@ const Postitem = () => {
         if (retUploadImg.isSuccess) {
             let retInsertData = await insertData({ ...data, fileName }) //insert Data
 
-            if (retInsertData.isSuccess)
+            if (retInsertData.isSuccess) {
                 alert(SUCCESS_UPLOAD_INSERT_DATA) //success upload & insert
+                history.push("/Dashboard")
+            }
             else {
                 await deleteData(fileName, file) //delete img if insert data failed
                 alert(retInsertData.msg)
@@ -64,12 +70,14 @@ const Postitem = () => {
 
     const insertData = async (data) => {
 
+        console.log(user.email)
         try {
             let retVal = await db.collection("items").add({
                 name: data.name,
                 desc: data.desc,
                 price: data.price,
-                fileName: data.fileName
+                fileName: data.fileName,
+                email: user.email
             })
 
             return new RetVal(true, retVal, SUCCESS_UPLOAD)

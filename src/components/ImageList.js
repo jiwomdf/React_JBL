@@ -17,16 +17,16 @@ const ImageList = () => {
 
       <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
 
-        {images.map((book) => {
+        {images.map((itm) => {
           return (
             <div
-              key={book.id}
+              key={itm.id}
               style={{ background: theme.ui }}
               className="max-w-sm rounded overflow-hidden shadow-lg m-6"
             >
               <img
                 src="https://source.unsplash.com/random/250x150"
-                alt={book.id}
+                alt={itm.id}
                 className="w-full h-full"
               />
 

@@ -25,7 +25,7 @@ const Dashboard = () => {
             </div>
 
             <br /><br />
-            <ImageListUser></ImageListUser>
+            <ImageListUser user={user}></ImageListUser>
         </div >
     );
 };

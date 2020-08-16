@@ -1,31 +1,36 @@
-import React, { createContext, useState } from 'react';
-// import { v1 as uuidv1 } from 'uuid'
+import React, { createContext, useState, useEffect } from 'react';
+import { db, storage } from '../script/firebaseInit'
+import { v4 } from 'uuid'
 
 export const ImageListContext = createContext()
 
 const ImageListContextProvider = (props) => {
-    const [images] = useState([
-        { title: 'name of the wind', id: 1 },
-        { title: 'the way of kings', id: 2 },
-        { title: 'the final empire', id: 3 },
-        { title: 'the hero of ages', id: 4 },
-        // { title: 'name of the wind', id: 5 },
-        // { title: 'the way of kings', id: 6 },
-        // { title: 'the final empire', id: 7 },
-        // { title: 'the hero of ages', id: 8 },
-        // { title: 'the hero of ages', id: 9 },
-        // { title: 'name of the wind', id: 10 },
-        // { title: 'the way of kings', id: 11 },
-        // { title: 'the final empire', id: 12 },
-        // { title: 'the hero of ages', id: 13 }
+    const [images, addImages] = useState([])
 
-    ])
-    /* const addBook = (title, author) => {
-        setBook([...books, { title: title, author: author, id: uuidv1() }])
-    }
-    const removeBook = (id) => {
-        setBook(books.filter(book => book.id !== id))
-    } */
+    useEffect(() => {
+
+        let didCancel = false;
+
+        async function fetchFirebase() {
+            const data = await db.collection("items").get()
+
+            if (!didCancel) {
+
+                data.forEach(async (doc) => {
+                    const url = await storage.child('uploads/' + doc.data().fileName).getDownloadURL()
+
+                    addImages(prevData => prevData.concat({ ...doc.data(), id: v4(), url: url }))
+                })
+
+            }
+        }
+
+        fetchFirebase()
+
+        return () => didCancel = true
+
+    }, [])
+
     return (
         <ImageListContext.Provider value={{ images }}>
             {props.children}
