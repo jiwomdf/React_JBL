@@ -80,10 +80,10 @@ const Navbar = () => {
                     <div className="flex my-2 w-full justify-center">
                         {
                             isLogin === false ?
-                                <Link to="/Login" className={navBtn.primary}><button className={btn.primary}>Login</button></Link>
+                                <Link to="/Login" className={navBtn.primary}><button className={btn.primary_small}>Login</button></Link>
                                 :
                                 <div className={navBtn.primary} >
-                                    <span className={btn.primary} onClick={signout}>Logout</span>
+                                    <button className={btn.primary_small} onClick={signout}>Logout</button>
                                 </div>
                         }
                         <button onClick={toggleTheme} className={btn.green_small}>
