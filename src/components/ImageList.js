@@ -1,51 +1,66 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
 import { btn, searchBar } from "../assets/style";
+import Modal from '../components/Modal'
 
 const ImageList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
   const { images } = useContext(ImageListContext);
+
+  const [isOpen, setIsOpen] = useState(false)
+  //const [items, setItems] = useState([])
+  const [selItm, setSelItm] = useState({})
+
   const theme = isLightTheme ? light : dark;
+
+  /* useEffect(() => {
+
+    setItems(prevData => prevData.concat(images))
+
+    console.log(items)
+  }, []) */
+
+  const onModalOpen = (item) => {
+    setIsOpen(true)
+    setSelItm(item)
+  }
+
+  /* const searchClick = () => {
+    const searchItm = document.getElementById("seach_field").value.toLowerCase()
+
+    items = items.filter(itm => itm.name.toLowerCase().includes(searchItm))
+    console.log(items)
+  } */
+
   const content = (
     <>
       {/* Search Bar */}
       <div className="flex justify-center mb-8">
-        <input type="text" placeholder="search" className={`${searchBar}`} />
-        <button className={`${btn.primary} ml-2`}>Search</button>
+        <input id="seach_field" type="text" placeholder="search" className={`${searchBar}`} />
+        <button className={`${btn.primary} ml-2`} /* onClick={searchClick} */>Search</button>
       </div>
 
       <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
 
         {images.map((itm) => {
           return (
-            <div
-              key={itm.id}
-              style={{ background: theme.ui }}
-              className="max-w-sm rounded overflow-hidden shadow-lg m-6"
-            >
-              <img
-                src={itm.url}
-                alt={itm.id}
-                className="w-full h-full"
-              />
+            <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
+              <img src={itm.url} alt={itm.id} className="w-full h-full" />
 
               <div className="px-4 py-4">
-                <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                <p className="text-base">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </p>
+                <div className="font-bold text-xl mb-2">{itm.name}</div>
+                <p className="text-base">{itm.desc}</p>
               </div>
               <div className="px-4 py-4">
-                <button className={btn.primary_rounded}>Detail</button>
-                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">
-                  Rp. 25000
-                </span>
+                <button className={btn.primary_rounded} onClick={() => onModalOpen(itm)}>Detail</button>
+                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">Rp. {itm.price}</span>
               </div>
             </div>
           );
         })}
       </div>
+      <Modal open={isOpen} item={selItm} onClose={() => setIsOpen(false)} selTheme={{ isLightTheme }} />
     </>
   );
 

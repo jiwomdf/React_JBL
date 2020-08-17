@@ -32,7 +32,7 @@ const ImageListContextProvider = (props) => {
     }, [])
 
     return (
-        <ImageListContext.Provider value={{ images }}>
+        <ImageListContext.Provider value={{ images, addImages }}>
             {props.children}
         </ImageListContext.Provider>
     );
