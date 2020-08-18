@@ -1,6 +1,7 @@
 .toggle-button {
     position: absolute;
-    margin-top: 8px;
+    /* float: right; */
+    margin-top: 4px;
     top: .75rem;
     right: 1rem;
     display: flex;

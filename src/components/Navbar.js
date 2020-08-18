@@ -37,14 +37,14 @@ const Navbar = () => {
                     <Link to="/">JBL Store</Link>
                 </div>
 
-                <div className="flex items-center w-auto visible sm:invisible">
+                <div className="flex items-center w-auto flex sm:hidden">
                     <button className="toggle-button" onClick={displayMobileMenue}>
                         <span className="bar"></span>
                         <span className="bar"></span>
                         <span className="bar"></span>
                     </button>
                 </div>
-                <div className="flex-grow flex items-center w-auto invisible sm:visible">
+                <div className="hidden flex-grow items-center w-auto sm:flex">
                     <div className="flex flex-grow">
                         <Link to="/" className={navBtn.primary} >
                             {

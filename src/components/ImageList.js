@@ -9,41 +9,40 @@ const ImageList = () => {
   const { images } = useContext(ImageListContext);
 
   const [isOpen, setIsOpen] = useState(false)
-  //const [items, setItems] = useState([])
+  const [items, setItems] = useState([])
   const [selItm, setSelItm] = useState({})
 
   const theme = isLightTheme ? light : dark;
 
-  /* useEffect(() => {
+  useEffect(() => {
 
-    setItems(prevData => prevData.concat(images))
-
-    console.log(items)
-  }, []) */
+    setItems(images)
+  }, [images])
 
   const onModalOpen = (item) => {
     setIsOpen(true)
     setSelItm(item)
   }
 
-  /* const searchClick = () => {
-    const searchItm = document.getElementById("seach_field").value.toLowerCase()
+  const searchClick = () => {
+    const searchItm = document.getElementById("seach_field").value
+      .toLowerCase()
+      .trim()
 
-    items = items.filter(itm => itm.name.toLowerCase().includes(searchItm))
-    console.log(items)
-  } */
+    setItems(images.filter(itm => itm.name.toLowerCase().includes(searchItm)))
+  }
 
   const content = (
     <>
       {/* Search Bar */}
       <div className="flex justify-center mb-8">
         <input id="seach_field" type="text" placeholder="search" className={`${searchBar}`} />
-        <button className={`${btn.primary} ml-2`} /* onClick={searchClick} */>Search</button>
+        <button className={`${btn.primary} ml-2`} onClick={searchClick} >Search</button>
       </div>
 
       <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
 
-        {images.map((itm) => {
+        {items.map((itm) => {
           return (
             <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
               <img src={itm.url} alt={itm.id} className="w-full h-full" />
@@ -65,6 +64,7 @@ const ImageList = () => {
   );
 
   return (
+    /* Responsive Content
     <div>
       {images.length <= 4 ?
         (
@@ -76,6 +76,11 @@ const ImageList = () => {
             {content}
           </div>
         )}
+    </div> */
+
+
+    <div style={{ color: theme.syntax, background: theme.bg, height: "100%" }}>
+      {content}
     </div>
   );
 };
