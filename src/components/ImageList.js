@@ -40,12 +40,15 @@ const ImageList = () => {
         <button className={`${btn.primary} ml-2`} onClick={searchClick} >Search</button>
       </div>
 
-      <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
+      <div className="container grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2">
 
         {items.map((itm) => {
           return (
             <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
-              <img src={itm.url} alt={itm.id} className="w-full h-full" />
+
+              <div style={{ width: "auto", height: "150px", overflow: "hidden" }}>
+                <img src={itm.url} alt={itm.id} className="w-full h-full" />
+              </div>
 
               <div className="px-4 py-4">
                 <div className="font-bold text-xl mb-2">{itm.name}</div>
@@ -64,8 +67,7 @@ const ImageList = () => {
   );
 
   return (
-    /* Responsive Content
-    <div>
+    /*<div>
       {images.length <= 4 ?
         (
           <div style={{ color: theme.syntax, background: theme.bg, height: "100vh", minHeight: "100vh", }}>
@@ -76,10 +78,8 @@ const ImageList = () => {
             {content}
           </div>
         )}
-    </div> */
-
-
-    <div style={{ color: theme.syntax, background: theme.bg, height: "100%" }}>
+    </div>*/
+    <div style={{ color: theme.syntax, background: theme.bg }}>
       {content}
     </div>
   );

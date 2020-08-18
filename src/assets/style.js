@@ -53,7 +53,7 @@ export const MODAL_STYLES = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  padding: '25px',
+  padding: '15px',
   zIndex: 9999
 }
 

@@ -22,23 +22,15 @@ const ImageListUser = (props) => {
 
         {images.filter(user => user.email === loginUser.email).map((itm) => {
           return (
-            <div
-              key={itm.id}
-              style={{ background: theme.ui }}
-              className="max-w-sm rounded overflow-hidden shadow-lg m-6"
-            >
+            <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
 
-              <img
-                src={itm.url}
-                alt={itm.id}
-                className="w-full h-full"
-              />
+              <div style={{ width: "auto", height: "150px", overflow: "hidden" }}>
+                <img src={itm.url} alt={itm.id} className="w-full h-full" />
+              </div>
 
               <div className="px-4 py-4">
                 <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                <p className="text-base">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </p>
+                <p className="text-base">{itm.desc}</p>
                 <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">Rp. 25000</span>
               </div>
               <div className="px-4 py-4">
@@ -54,8 +46,9 @@ const ImageListUser = (props) => {
   );
 
   return (
+    /* 
     <div>
-      {images.length <= 4 ?
+       {images.length <= 4 ?
         (
           <div style={{ color: theme.syntax, background: theme.bg, height: "100vh", minHeight: "100vh", }}>
             {content}
@@ -65,6 +58,10 @@ const ImageListUser = (props) => {
             {content}
           </div>
         )}
+    </div>
+    */
+    <div style={{ color: theme.syntax, background: theme.bg }}>
+      {content}
     </div>
   );
 };
