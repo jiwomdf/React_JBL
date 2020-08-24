@@ -1,13 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from '../contexts/ThemeContext';
 import { txtTitle, btn, labelInput, form } from '../assets/style'
 import { auth } from '../script/firebaseInit'
 import { useHistory } from "react-router-dom";
+import { TweenMax, Power3 } from 'gsap'
 
 const Register = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
     const theme = isLightTheme ? light : dark
     const history = useHistory();
+
+    let registerCon = useRef(null)
+
+    /* on Mount */
+    useEffect(() => {
+        TweenMax.from(registerCon, .8, {
+            opacity: 0,
+            y: 20,
+            ease: Power3.easeOut,
+        })
+    }, [])
 
     const register = async () => {
 
@@ -22,7 +34,7 @@ const Register = () => {
 
     return (
         <div style={{ color: theme.syntax, background: theme.bg, height: "85vh", minHeight: "85vh" }}>
-            <div className="container mx-auto flex justify-center py-2">
+            <div ref={el => registerCon = el} className="container mx-auto flex justify-center py-2">
                 <div className={form.card} style={{ background: theme.ui }}>
                     <p className={txtTitle}>Register</p>
 

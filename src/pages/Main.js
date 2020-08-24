@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
-// import ImageSlider from '../components/ImageSlider'
 import ImageList from '../components/ImageList';
 import { txtTitle } from "../assets/style";
 import { ThemeContext } from "../contexts/ThemeContext";
-
 
 const Main = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);

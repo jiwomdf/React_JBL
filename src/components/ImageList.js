@@ -1,13 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
 import { btn, searchBar, txtTitle } from "../assets/style";
 import Modal from '../components/Modal'
 import ItemCard from "./ItemCard";
+import { VISITOR } from '../constant/userPrevilage'
 
 const ImageList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
   const { images, loading, err } = useContext(ImageListContext);
+
+  let seachInpt = useRef(null)
 
   const [isOpen, setIsOpen] = useState(false)
   const [items, setItems] = useState([])
@@ -25,7 +28,7 @@ const ImageList = () => {
   }
 
   const searchClick = () => {
-    const searchItm = document.getElementById("seach_field").value
+    const searchItm = seachInpt.value
       .toLowerCase()
       .trim()
 
@@ -36,18 +39,17 @@ const ImageList = () => {
     <>
       {/* Search Bar */}
       <div className="flex justify-center mb-8">
-        <input id="seach_field" type="text" placeholder="search" className={`${searchBar}`} />
-        <button className={`${btn.primary} ml-2`} onClick={searchClick} >Search</button>
+        <input ref={el => seachInpt = el} type="text" placeholder="search" className={`${searchBar} opacity-1`} />
+        <button className={`${btn.primary} ml-2 opacity-1`} onClick={searchClick} >Search</button>
       </div>
 
-      {loading && <p className={`${txtTitle} flex justify-center my-12`}>Loading</p>}
-      {err && <h1>Error</h1>}
+      {loading && <p className={`${txtTitle} flex justify-center my-12`} style={{ height: "100vh" }}>Loading...</p>}
+      {err && <p className={`${txtTitle} flex justify-center my-12`} style={{ height: "100vh" }}>Error please refresh the page</p>}
 
-
-      <div className="grid gap-1 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
+      <div className="grid gap-1 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto" >
         {items.map((itm) => {
           return (
-            <ItemCard key={itm.id} itm={itm} theme={theme} onModalOpen={onModalOpen} />
+            <ItemCard key={itm.id} itm={itm} theme={theme} onModalOpen={onModalOpen} userPrev={VISITOR} />
           );
         })}
       </div>
@@ -56,18 +58,6 @@ const ImageList = () => {
   );
 
   return (
-    /*<div>
-      {images.length <= 4 ?
-        (
-          <div style={{ color: theme.syntax, background: theme.bg, height: "100vh", minHeight: "100vh", }}>
-            {content}
-          </div>
-        ) : (
-          <div style={{ color: theme.syntax, background: theme.bg, height: "100%" }}>
-            {content}
-          </div>
-        )}
-    </div>*/
     <div style={{ color: theme.syntax, background: theme.bg }}>
       {content}
     </div>

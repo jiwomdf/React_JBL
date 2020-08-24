@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from "react";
 
 import { ThemeContext } from '../contexts/ThemeContext';
 import { UserContext, ACTIONS } from '../contexts/UserContext'
@@ -6,6 +6,7 @@ import { UserContext, ACTIONS } from '../contexts/UserContext'
 import { txtTitle, labelInput, btn, form } from '../assets/style'
 import { useHistory } from "react-router-dom";
 import { auth } from '../script/firebaseInit'
+import { TweenMax, Power3 } from 'gsap'
 
 const Login = () => {
     const { isLightTheme, light, dark } = useContext(ThemeContext);
@@ -13,6 +14,17 @@ const Login = () => {
 
     const theme = isLightTheme ? light : dark
     const history = useHistory();
+
+    let loginCon = useRef(null)
+
+    /* on Mount */
+    useEffect(() => {
+        TweenMax.from(loginCon, .8, {
+            opacity: 0,
+            y: 20,
+            ease: Power3.easeOut,
+        })
+    }, [])
 
     const navigateRegister = () => {
         history.push("/Register")
@@ -35,7 +47,7 @@ const Login = () => {
     return (
         <div style={{ color: theme.syntax, background: theme.bg, height: "85vh", minHeight: "85vh" }} >
 
-            <div className="container mx-auto flex justify-center py-8">
+            <div ref={el => loginCon = el} className="container mx-auto flex justify-center py-8">
 
                 <form className={form.card} style={{ background: theme.ui }} >
                     <p className={txtTitle}>Login</p>

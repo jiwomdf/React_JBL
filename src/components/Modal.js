@@ -6,7 +6,7 @@ export default function Modal({ open, item, onClose, selTheme }) {
 
 
     //testing the popup style
-    const theme = selTheme.isLightTheme ? { bg: "bg-gray-300", color: "text-gray-800" } : { bg: "bg-gray-800", color: "text-white" };
+    const theme = selTheme.isLightTheme ? { bg: "bg-purple-100", color: "text-gray-800" } : { bg: "bg-purple-900", color: "text-white" };
 
     if (!open) return null
 

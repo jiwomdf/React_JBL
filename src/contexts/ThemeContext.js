@@ -6,7 +6,7 @@ const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState({
     isLightTheme: true,
     light: { syntax: "#555", ui: "#ddd", bg: "#F7FAFC", bg2: "#F7FAFC" },
-    dark: { syntax: "#ddd", ui: "#333", bg: "#595959", bg2: "#38A169" },
+    dark: { syntax: "#ddd", ui: "#44337a", bg: "#553c9a", bg2: "#38A169" },
   })
 
   const toggleTheme = () => {
