@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
-import { btn, searchBar } from "../assets/style";
+import { btn, searchBar, txtTitle } from "../assets/style";
 import Modal from '../components/Modal'
+import ItemCard from "./ItemCard";
 
 const ImageList = () => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const { images } = useContext(ImageListContext);
+  const { images, loading, err } = useContext(ImageListContext);
 
   const [isOpen, setIsOpen] = useState(false)
   const [items, setItems] = useState([])
@@ -15,7 +16,6 @@ const ImageList = () => {
   const theme = isLightTheme ? light : dark;
 
   useEffect(() => {
-
     setItems(images)
   }, [images])
 
@@ -40,25 +40,14 @@ const ImageList = () => {
         <button className={`${btn.primary} ml-2`} onClick={searchClick} >Search</button>
       </div>
 
-      <div className="container grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2">
+      {loading && <p className={`${txtTitle} flex justify-center my-12`}>Loading</p>}
+      {err && <h1>Error</h1>}
 
+
+      <div className="grid gap-1 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
         {items.map((itm) => {
           return (
-            <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
-
-              <div style={{ width: "auto", height: "150px", overflow: "hidden" }}>
-                <img src={itm.url} alt={itm.id} className="w-full h-full" />
-              </div>
-
-              <div className="px-4 py-4">
-                <div className="font-bold text-xl mb-2">{itm.name}</div>
-                <p className="text-base">{itm.desc}</p>
-              </div>
-              <div className="px-4 py-4">
-                <button className={btn.primary_rounded} onClick={() => onModalOpen(itm)}>Detail</button>
-                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">Rp. {itm.price}</span>
-              </div>
-            </div>
+            <ItemCard key={itm.id} itm={itm} theme={theme} onModalOpen={onModalOpen} />
           );
         })}
       </div>

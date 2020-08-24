@@ -1,47 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ImageListContext } from "../contexts/ImageListContext";
-import { btn, searchBar } from "../assets/style";
+import { btn, searchBar, txtTitle } from "../assets/style";
+import ItemCard from "./ItemCard";
+import Modal from '../components/Modal'
+
 
 const ImageListUser = (props) => {
   const { isLightTheme, light, dark } = useContext(ThemeContext);
-  const { images } = useContext(ImageListContext);
+  const { images, loading, err } = useContext(ImageListContext);
   const theme = isLightTheme ? light : dark;
 
+  const [isOpen, setIsOpen] = useState(false)
+  const [selItm, setSelItm] = useState({})
+
+  const onModalOpen = (item) => {
+    setIsOpen(true)
+    setSelItm(item)
+  }
   const loginUser = props.user
 
   const content = (
     <>
       {/* Search Bar */}
       <div className="flex justify-center mb-8">
-        <input type="text" placeholder="search" className={`${searchBar}`} />
-        <button className={`${btn.primary} ml-2`}>Search</button>
+        <input id="seach_field" type="text" placeholder="search" className={`${searchBar}`} />
+        <button className={`${btn.primary} ml-2`} >Search</button>
       </div>
 
-      <div className="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
+      {loading && <p className={`${txtTitle} flex justify-center my-12`}>Loading</p>}
+      {err && <h1>Error</h1>}
+
+      <div className="grid gap-1 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 container mx-auto ">
 
         {images.filter(user => user.email === loginUser.email).map((itm) => {
           return (
-            <div key={itm.id} style={{ background: theme.ui }} className="max-w-sm rounded overflow-hidden shadow-lg m-6">
-
-              <div style={{ width: "auto", height: "150px", overflow: "hidden" }}>
-                <img src={itm.url} alt={itm.id} className="w-full h-full" />
-              </div>
-
-              <div className="px-4 py-4">
-                <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                <p className="text-base">{itm.desc}</p>
-                <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold mr-2">Rp. 25000</span>
-              </div>
-              <div className="px-4 py-4">
-                <button className={`${btn.primary_rounded} mx-1`}>Detail</button>
-                <button className={`${btn.green_rounded} mx-1`}>Edit</button>
-                <button className={`${btn.red_rounded} mx-1`}>Delete</button>
-              </div>
-            </div>
+            <ItemCard key={itm.id} itm={itm} theme={theme} onModalOpen={onModalOpen} />
           );
         })}
       </div>
+      <Modal open={isOpen} item={selItm} onClose={() => setIsOpen(false)} selTheme={{ isLightTheme }} />
     </>
   );
 

@@ -5,6 +5,7 @@ import { btn, MODAL_STYLES, OVERLAY_STYLES } from '../assets/style'
 export default function Modal({ open, item, onClose, selTheme }) {
 
 
+    //testing the popup style
     const theme = selTheme.isLightTheme ? { bg: "bg-gray-300", color: "text-gray-800" } : { bg: "bg-gray-800", color: "text-white" };
 
     if (!open) return null
