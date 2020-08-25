@@ -25,7 +25,7 @@ export default function Modal({ open, item, onClose, selTheme }) {
                     <span className="inline-block rounded-full text-sm font-semibold mr-2">Rp.{item.price}</span>
                 </div>
                 <div className="px-4 py-4 flex justify-end">
-                    <button className={`${btn.green_rounded}`} onClick={onClose}>Close Modal</button>
+                    <button className={`${btn.primary_rounded}`} onClick={onClose}>Close Modal</button>
                 </div>
             </div>
         </>,
