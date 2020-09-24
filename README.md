@@ -1,5 +1,5 @@
 ### JBL Store Project (React + Firebase) 
-# This project is under development and will always be updated
+# This project is under development
 
 #### This is a JBL Store Project, a website that sell a audio and sound system (Still under development)
 #### Link https://react-jbl.web.app/
